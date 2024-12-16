@@ -7,4 +7,5 @@ VALUES
 ('Who wrote Hamlet?', 'Shakespeare', 'Dickens', 'Homer', 'Tolstoy', 'A', 'Literature', 'Medium'),
 ('What is the square root of 16?', '2', '3', '4', '5', 'C', 'Math', 'Easy'),
 ('What is the chemical symbol for Water?', 'O2', 'H2O', 'HO', 'HHO', 'B', 'Science', 'Medium'),
+('What is 5 + 2?', '3', '4', '7', '6', 'C', 'Math', 'Easy'),
 ('Who painted the Mona Lisa?', 'Van Gogh', 'Da Vinci', 'Picasso', 'Monet', 'B', 'Art', 'Medium');
