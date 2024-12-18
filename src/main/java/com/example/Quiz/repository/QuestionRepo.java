@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepo extends JpaRepository<Question, Long> {
-    List<Question> findByCategoryAndDifficulty(String category, String difficulty);
+    List<Question> findByCategoryIgnoreCaseAndDifficultyIgnoreCase(String category, String difficulty);
 }

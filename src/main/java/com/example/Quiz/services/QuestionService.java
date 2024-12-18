@@ -9,6 +9,7 @@ import com.example.Quiz.repository.QuestionSeesionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -25,13 +26,10 @@ public class QuestionService {
     private QuestionSeesionRepo quizSessionRepository;
 
     public List<Question> getRandomQuestions(String category, String difficulty, int limit) {
-        List<Question> questions = questionRepository.findByCategoryAndDifficulty(category, difficulty);
+        List<Question> questions = questionRepository.findByCategoryIgnoreCaseAndDifficultyIgnoreCase(category, difficulty);
         System.out.println("Fetched questions: " + questions);
         List<Question> selectedQuestions = questions.stream().limit(limit).collect(Collectors.toList());
-
-        // Save question IDs for this user's session
-        //xsaveQuizSessionQuestions(userId, selectedQuestions);
-
+        Collections.shuffle(selectedQuestions);
         return selectedQuestions;
     }
 
@@ -57,13 +55,18 @@ public class QuestionService {
         return new quizResult(correct, incorrect);
     }
 
-    public QuestionSessions saveQuizSession(Long user, int totalQuestions, int correctAnswers, int incorrectAnswers) {
+    public QuestionSessions saveQuizSession(Long userId, int totalQuestions, int correctAnswers, int incorrectAnswers, long min, long sec,String category) {
         QuestionSessions session = new QuestionSessions();
-        session.setUserId(user);
+        session.setUserId(userId);
         session.setTotalQuestions(totalQuestions);
         session.setCorrectAnswers(correctAnswers);
         session.setIncorrectAnswers(incorrectAnswers);
         session.setQuizDate(LocalDateTime.now());
+        session.setTimeTaken_min(min);
+        session.setTimeTaken_sec(sec);
+        session.setCategory(category);
         return quizSessionRepository.save(session);
     }
+
+
 }

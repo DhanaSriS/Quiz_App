@@ -23,5 +23,6 @@ CREATE TABLE quiz_sessions (
     correct_answers INT,
     incorrect_answers INT,
     quiz_date TIMESTAMP,
+    time_taken TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );

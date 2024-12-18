@@ -1,5 +1,6 @@
 package com.example.Quiz.services;
 
+import com.example.Quiz.DTO.Leaderboard;
 import com.example.Quiz.model.QuestionSessions;
 import com.example.Quiz.repository.QuestionSeesionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,4 +17,5 @@ public class QuestionSessionService {
     public List<QuestionSessions> getSessionsByUser(Long userId) {
         return sessionRepository.findByUserId(userId);
     }
+
 }
